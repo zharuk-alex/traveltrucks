@@ -1,29 +1,30 @@
 import { Suspense, useEffect, useMemo } from "react";
+import { useMatches } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
 import Header from "components/Header/Header";
 import { AppLoader } from "components/UI";
-import { useLocation } from "react-router-dom";
-import { Helmet } from "react-helmet-async";
+import { getSeo } from "../../seo";
+import { useState } from "react";
 
 const AppLayout = ({ children }) => {
-  const location = useLocation();
+  const matches = useMatches();
+  const currentRouteName = matches.find((match) => match.handle)?.handle
+    .routeName;
 
-  const pageTitle = useMemo(() => {
-    switch (location.pathname) {
-      case "/":
-        return "Home - Campers of your dreams";
-      case "/catalog":
-        return "Catalog - Browse Our Campers";
-      case location.pathname.match(/\/catalog\/\d+/)?.input:
-        return `Camper Details`;
-      default:
-        return "Page Not Found";
-    }
-  }, [location]);
+  const [seo, setSeo] = useState({});
+
+  useEffect(() => {
+    const t = getSeo(currentRouteName);
+    setSeo(t);
+  }, [currentRouteName]);
 
   return (
     <>
       <Helmet>
-        <title>{pageTitle}</title>
+        <title>{seo.title}</title>
+        {seo.meta?.map(({ name, content }, index) => (
+          <meta key={index} name={name} content={content} />
+        ))}
       </Helmet>
       <Header />
       <main>

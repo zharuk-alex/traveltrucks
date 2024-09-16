@@ -9,19 +9,31 @@ const CamperDetailsPage = lazy(() =>
 const NotFoundPage = lazy(() => import("./pages/NotFoundPage/NotFoundPage"));
 
 const routes = [
-  { path: "/", element: <HomePage />, title: "Home", isNav: true },
+  {
+    path: "/",
+    element: <HomePage />,
+    title: "Home",
+    isNav: true,
+    handle: { routeName: "home" },
+  },
   {
     path: "/catalog",
     element: <CatalogPage />,
     title: "Catalog",
     isNav: true,
+    handle: { routeName: "catalog" },
   },
   {
     path: "/catalog/:id",
     element: <CamperDetailsPage />,
     children: [{ path: "reviews", element: <CamperReviews /> }],
+    handle: { routeName: "camper_details" },
   },
-  { path: "*", element: <NotFoundPage /> },
+  {
+    path: "*",
+    element: <NotFoundPage />,
+    handle: { routeName: "not_found" },
+  },
 ];
 
 export default routes;
