@@ -65,7 +65,7 @@ const validationSchema = Yup.object().shape(
 );
 
 const BookingForm = () => {
-  const [loading, setLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
   const initialValues = formFields.reduce(
     (fields, field) => ({ ...fields, [field.name]: field.value || "" }),
     {}
@@ -77,13 +77,13 @@ const BookingForm = () => {
   }));
 
   const handleSubmit = async (values, actions) => {
-    setLoading(true);
+    setIsLoading(true);
     await new Promise((resolve) => {
       setTimeout(() => {
         resolve(true);
       }, 2000);
     });
-    setLoading(false);
+    setIsLoading(false);
     actions.resetForm();
 
     toast.success("Form submitted successfully!");
@@ -112,7 +112,7 @@ const BookingForm = () => {
           <Btn
             style={{ margin: "16px auto 0px" }}
             type="submit"
-            loading={loading}
+            loading={isLoading}
           >
             Send
           </Btn>

@@ -45,10 +45,6 @@ const CatalogPage = () => {
     setSearchParams(values);
   };
 
-  if (isLoading) {
-    return <AppLoader />;
-  }
-
   const showLoadMore = useMemo(
     () => pagination.page < pagination.total,
     [pagination]
@@ -67,6 +63,7 @@ const CatalogPage = () => {
               style={{ maxWidth: 420 }}
             />
           )}
+          {!campers.length && !!isLoading && <AppLoader />}
           {campers.length > 0 && (
             <ItemsGroup
               as={CamperItem}
@@ -74,11 +71,12 @@ const CatalogPage = () => {
               className={css.itemsGroup}
             />
           )}
-          {!isLoading && showLoadMore && (
+          {showLoadMore && (
             <Btn
               onClick={handleLoadMore}
               className={css.loadMore}
               variant="outlined"
+              loading={isLoading}
             >
               Load more
             </Btn>

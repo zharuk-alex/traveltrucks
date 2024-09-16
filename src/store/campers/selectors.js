@@ -104,7 +104,7 @@ export const selectVehicleFormsList = [
   },
 ];
 
-export const selectLoading = (state) => state.campers.loading;
+export const selectLoading = (state) => state.campers.isLoading;
 export const selectError = (state) => state.campers.error;
 export const selectCampersObj = (state) => state.campers.items ?? {};
 export const selectCampers = createSelector([selectCampersObj], (campersObj) =>

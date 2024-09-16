@@ -9,11 +9,13 @@ import {
 import css from "./Filters.module.css";
 import FiltersGroup from "components/FiltersGroup/FiltersGroup";
 import { Btn, TextField } from "components/UI";
+import { selectLoading } from "store/campers/selectors";
 
 const Filters = ({ onSubmit }) => {
   const filters = useSelector(selectFilters);
   const equipFilters = selectVehicleEquipList;
   const formFilters = selectVehicleFormsList;
+  const isLoading = useSelector(selectLoading);
 
   const formFiltersModifyed = useMemo(
     () => formFilters?.map((field) => ({ ...field, single: true })),
@@ -61,7 +63,8 @@ const Filters = ({ onSubmit }) => {
               items={formFiltersModifyed}
             />
           </div>
-          <Btn type="submit" className={css.btn}>
+          <pre>loading: {JSON.stringify(isLoading, null, 2)}</pre>
+          <Btn type="submit" loading={isLoading} className={css.btn}>
             Search
           </Btn>
         </Form>

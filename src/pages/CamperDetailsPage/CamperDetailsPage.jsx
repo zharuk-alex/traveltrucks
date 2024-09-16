@@ -90,13 +90,10 @@ const CamperDetailsPage = () => {
     openModal(true);
   };
 
-  if (isLoading) {
-    return <AppLoader />;
-  }
-
   return (
     <div className="page">
       <div className={clsx("container", css.wrapper)}>
+        {isLoading && !camper && <AppLoader />}
         {!!error && (
           <Card variant="error" title="An error occurred" text={error}>
             <Link to="/catalog">

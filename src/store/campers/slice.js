@@ -30,9 +30,6 @@ const campersSlice = createSlice({
     builder
       .addCase(fetchCampers.pending, handlePending)
       .addCase(fetchCampers.fulfilled, (state, { payload }) => {
-        state.isLoading = false;
-        state.error = null;
-
         const itemsObj = payload.items?.reduce(
           (acc, camper) => ({ ...acc, [camper.id]: camper }),
           {}
@@ -43,6 +40,8 @@ const campersSlice = createSlice({
         } else {
           state.items = itemsObj;
         }
+        state.isLoading = false;
+        state.error = null;
       })
       .addCase(fetchCampers.rejected, handleRejected)
       .addCase(fetchCamperById.pending, handlePending)

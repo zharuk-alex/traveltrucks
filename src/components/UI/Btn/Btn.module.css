@@ -6,6 +6,7 @@
   padding: 16px 56px;
   border-radius: 200px;
   cursor: pointer;
+  position: relative;
 }
 
 .button:disabled {
@@ -33,4 +34,15 @@
 
 .outlined:hover {
   border: 1px solid var(--color-button-hover);
+}
+
+.hiddenChild {
+  visibility: hidden;
+}
+
+.loader {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
