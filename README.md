@@ -46,7 +46,7 @@ Visit the app: [TravelTrucks](https://traveltrucks-ruby.vercel.app/).
 Start the development server:
 
 ```bash
-  git clone https://github.com/zharuk-alex/traveltrucks.git
+  npm run dev
 ```
 
 Create a production build:
