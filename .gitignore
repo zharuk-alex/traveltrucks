@@ -3,6 +3,7 @@ main__.jsx
 src/data.json
 src/assets/icons/*
 !src/assets/icons/icons.svg
+!src/assets/icons/logo.svg
 # Logs
 logs
 *.log
