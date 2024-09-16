@@ -99,8 +99,8 @@ const CamperDetailsPage = () => {
       <div className={clsx("container", css.wrapper)}>
         {!!error && (
           <Card variant="error" title="An error occurred" text={error}>
-            <Link to="/">
-              <Btn>Go to main</Btn>
+            <Link to="/catalog">
+              <Btn>Go to campers</Btn>
             </Link>
           </Card>
         )}

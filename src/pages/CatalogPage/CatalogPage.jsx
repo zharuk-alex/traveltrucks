@@ -15,7 +15,8 @@ import { setPagination } from "store/pagination/slice";
 import { setFilter } from "store/filters/slice";
 import { selectPagination } from "store/pagination/selectors";
 import { Btn, ItemsGroup, Card } from "components/UI";
-import { Link, useSearchParams } from "react-router-dom";
+import { AppLoader } from "components/UI";
+import { useSearchParams } from "react-router-dom";
 
 const CatalogPage = () => {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -40,12 +41,12 @@ const CatalogPage = () => {
   const handleSubmit = (values) => {
     dispatch(clearCampers());
     dispatch(setAppendMode(false));
-    dispatch(setPagination({ page: 1 }));
+    dispatch(setPagination({ page: 1, total: 0 }));
     setSearchParams(values);
   };
 
   if (isLoading) {
-    return <Loader />;
+    return <AppLoader />;
   }
 
   const showLoadMore = useMemo(
@@ -59,11 +60,12 @@ const CatalogPage = () => {
         <Filters onSubmit={handleSubmit} />
         <div style={{ flexGrow: 1 }}>
           {!!error && (
-            <Card variant="error" title="An error occurred" text={error}>
-              <Link to="/">
-                <Btn>Go to main</Btn>
-              </Link>
-            </Card>
+            <Card
+              variant="error"
+              title="An error occurred"
+              text={error}
+              style={{ maxWidth: 420 }}
+            />
           )}
           {campers.length > 0 && (
             <ItemsGroup

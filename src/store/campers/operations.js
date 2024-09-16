@@ -3,7 +3,6 @@ import axios from "axios";
 import { setPagination } from "../pagination/slice";
 import { selectFilters } from "../filters/selectors";
 import { selectPagination } from "../pagination/selectors";
-import data from "../../data.json";
 
 axios.defaults.baseURL = "https://66b1f8e71ca8ad33d4f5f63e.mockapi.io";
 
@@ -33,6 +32,10 @@ export const fetchCampers = createAsyncThunk(
 
       return response.data;
     } catch (e) {
+      if (e.response.status === 404 || e.response.data === "Not found") {
+        return rejectWithValue("No campers found for the selected filters");
+      }
+
       return rejectWithValue(e.message);
     }
   }
@@ -45,6 +48,9 @@ export const fetchCamperById = createAsyncThunk(
       const response = await axios.get(`/campers/${id}`);
       return response.data;
     } catch (e) {
+      if (e.response.status === 404 || e.response.data === "Not found") {
+        return rejectWithValue("Camper not found!");
+      }
       return rejectWithValue(e.message);
     }
   }
