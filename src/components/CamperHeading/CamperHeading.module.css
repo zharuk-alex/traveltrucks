@@ -1,0 +1,55 @@
+.wrapper {
+  display: flex;
+  align-items: flex-start;
+  flex-grow: 1;
+}
+
+.title {
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 1.33333;
+  color: var(--color-main);
+  display: -webkit-box;
+  line-clamp: 1;
+  -webkit-box-orient: vertical;
+  white-space: normal;
+  overflow: hidden;
+}
+
+.itemsSet {
+  display: flex;
+  gap: 16px;
+  width: 100%;
+}
+
+.titleWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  flex-grow: 1
+}
+
+.reviewLink {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.5;
+  text-decoration-skip-ink: none;
+  color: var(--color-main);
+}
+
+.reviewLink:hover {
+  text-decoration: underline;
+}
+
+.subtitleIcon {
+  margin-right: 4px;
+}
+
+.price {
+  composes: title;
+}
+
+.column {
+  flex-direction: column;
+  gap: 16px
+}

@@ -1,0 +1,16 @@
+.wrapper {
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  justify-content: center;
+  align-items: center;
+  min-width: 320px;
+  margin: 0 auto;
+  border-radius: 10px;
+  border: 1px solid var(--color-gray-light);
+}
+
+.error {
+  border-color: red;
+}

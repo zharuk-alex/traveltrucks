@@ -1,0 +1,38 @@
+.wrapper {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+
+  justify-content: space-between;
+}
+
+.chipsGroup {
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.details {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.detailsTitle {
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 1.2;
+  color: var(--color-main);
+}
+
+.detailsList {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.detailsItem {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  text-transform: capitalize;
+}

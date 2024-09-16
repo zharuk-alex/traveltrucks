@@ -1,32 +1,24 @@
-*,
-*::after,
-*::before {
-  box-sizing: border-box;
-}
+@import 'styles/reset.css';
+@import 'styles/variables.css';
 
 body {
-  font-family: sans-serif;
+  font-family: var(--font-family);
   line-height: 1.5;
+  font-size: 16px;
+  color: var(--color-main);
 }
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-p {
-  margin: 0;
+.page {
+  margin-block: 48px;
 }
 
-ul,
-ol {
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
-
-img {
+.container {
   display: block;
-  max-width: 100%;
+  margin: 0 auto;
+  padding-inline: var(--md-padding);
+  max-width: 1352px;
+}
+
+.underline {
+  text-decoration: underline;
 }

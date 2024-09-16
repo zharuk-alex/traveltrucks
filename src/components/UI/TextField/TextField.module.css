@@ -1,0 +1,14 @@
+.input {
+  display: block;
+  flex-grow: 1;
+  width: 100%;
+  color: var(--color-gray);
+  font-size: 16px;
+  outline: none;
+  border: none;
+  background-color: var(--color-inputs);
+}
+
+.hasAppendIcon {
+  padding-left: 8px;
+}

@@ -1,0 +1,8 @@
+.icon {
+  user-select: none;
+}
+
+.clickable {
+  composes: icon;
+  cursor: pointer;
+}

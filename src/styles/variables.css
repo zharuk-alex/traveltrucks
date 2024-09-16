@@ -1,0 +1,16 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+:root {
+  --color-main: #101828;
+  --color-text: #475467;
+  --color-white: #fff;
+  --color-inputs: #f7f7f7;
+  --color-badges: #f2f4f7;
+  --color-gray: #6c717b;
+  --color-gray-light: #dadde1;
+  --color-button: #e44848;
+  --color-button-hover: #d84343;
+  --color-rating: #ffc531;
+  --font-family: "Inter", sans-serif;
+  --md-padding: 20px;
+}

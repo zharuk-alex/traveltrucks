@@ -1,0 +1,51 @@
+.group {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  background-color: var(--color-inputs);
+  border-radius: 12px;
+  overflow: hidden;
+  padding: 18px;
+  font-size: 16px;
+  min-height: 60px;
+}
+
+.group:focus-within .input {
+  color: var(--color-main);
+}
+
+
+.invalid {
+  composes: input;
+  outline: 1px solid red;
+}
+
+.fromLabel {
+  line-height: 1.5;
+  font-weight: 400;
+  color: var(--color-gray);
+}
+
+.fromControl {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.5rem;
+}
+
+.errorMsg {
+  font-size: 0.75rem;
+  color: red;
+}
+
+.icon {
+  fill: var(--color-gray);
+}
+
+.group:focus-within .icon {
+  fill: var(--color-main);
+}
+
+.clearIcon {
+  cursor: pointer;
+}

@@ -1,0 +1,25 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.title {
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 1.2;
+  color: var(--main);
+}
+
+.itemsSet {
+  --indent: 12px;
+  --items: 3;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: var(--indent);
+}
+
+.setItem {
+  flex-basis: calc((100% - var(--indent) * (var(--items) - 1)) / var(--items));
+}

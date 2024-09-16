@@ -1,0 +1,17 @@
+.avatar {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--color-badges);
+}
+
+.letter {
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 1.33333;
+  color: var(--color-button);
+  text-transform: uppercase;
+}

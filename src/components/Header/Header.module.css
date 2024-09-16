@@ -1,0 +1,21 @@
+.header {
+  border-bottom: 1px solid var(--color-badges);
+  padding: 24px 64px;
+  height: 72px;
+  background: var(--color-inputs);
+}
+
+.wrapper {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.logo {
+  position: absolute;
+  top: 0;
+  left: var(--md-padding);
+  display: inline-flex;
+  height: 100%;
+  align-items: center;
+}

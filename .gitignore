@@ -1,3 +1,8 @@
+App__.jsx
+main__.jsx
+src/data.json
+src/assets/icons/*
+!src/assets/icons/icons.svg
 # Logs
 logs
 *.log
