@@ -1,6 +1,4 @@
 import { createSelector } from "@reduxjs/toolkit";
-import { selectFilters } from "store/filters/selectors";
-import { selectPagination } from "store/pagination/selectors";
 
 export const selectVehicleEquipList = [
   {
@@ -108,36 +106,8 @@ export const selectVehicleFormsList = [
 
 export const selectLoading = (state) => state.campers.loading;
 export const selectError = (state) => state.campers.error;
-export const selectAllCampers = (state) => state.campers.items ?? {};
-export const selectCamperById = (state, id) => state.campers.items?.[id];
-
-export const selectCampers = createSelector(
-  [selectAllCampers, selectFilters, selectPagination],
-  (campers, filters, pagination) => {
-    const filtered = Object.entries(campers).filter(([id, item]) => {
-      return Object.entries(filters).every(([key, value]) => {
-        try {
-          const cond =
-            typeof value === "boolean"
-              ? !!item?.[key] === value
-              : item?.[key]?.toLowerCase()?.includes(value.toLowerCase());
-          return cond;
-        } catch (error) {
-          console.warn(error);
-          return Object.values(campers);
-        }
-      });
-    });
-
-    const { page, perPage } = pagination;
-    const startIndex = 0;
-    const endIndex = page * perPage;
-
-    const paginated = (filtered.slice(startIndex, endIndex) ?? campers).map(
-      ([_, value]) => value,
-      {}
-    );
-
-    return { paginated, filteredTotal: filtered.length };
-  }
+export const selectCampersObj = (state) => state.campers.items ?? {};
+export const selectCampers = createSelector([selectCampersObj], (campersObj) =>
+  Object.values(campersObj)
 );
+export const selectCamperById = (state, id) => state.campers.items?.[id];

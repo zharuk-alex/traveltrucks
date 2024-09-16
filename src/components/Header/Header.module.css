@@ -3,6 +3,11 @@
   padding: 24px 64px;
   height: 72px;
   background: var(--color-inputs);
+  position: sticky;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1;
 }
 
 .wrapper {

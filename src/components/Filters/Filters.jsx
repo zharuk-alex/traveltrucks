@@ -1,10 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
 import { Form, Formik } from "formik";
 import { useEffect, useMemo } from "react";
-import { useSearchParams } from "react-router-dom";
 import { selectFilters } from "store/filters/selectors";
-import { setFilter } from "store/filters/slice";
-import { setPagination } from "store/pagination/slice";
 import {
   selectVehicleEquipList,
   selectVehicleFormsList,
@@ -13,9 +10,7 @@ import css from "./Filters.module.css";
 import FiltersGroup from "components/FiltersGroup/FiltersGroup";
 import { Btn, TextField } from "components/UI";
 
-const Filters = () => {
-  const dispatch = useDispatch();
-  const [searchParams, setSearchParams] = useSearchParams();
+const Filters = ({ onSubmit }) => {
   const filters = useSelector(selectFilters);
   const equipFilters = selectVehicleEquipList;
   const formFilters = selectVehicleFormsList;
@@ -25,14 +20,6 @@ const Filters = () => {
     [formFilters]
   );
 
-  const initialFilters = useMemo(() => {
-    const params = { location: "" };
-    for (const [key, value] of searchParams.entries()) {
-      params[key] = value;
-    }
-    return params;
-  }, [searchParams, filters]);
-
   const handleSubmit = (values) => {
     const filteredValues = {};
     for (const key in values) {
@@ -40,22 +27,17 @@ const Filters = () => {
         filteredValues[key] = values[key];
       }
     }
-    dispatch(
-      setPagination({
-        page: 1,
-      })
-    );
-    setSearchParams(filteredValues);
-  };
 
-  useEffect(() => {
-    const searchObj = Object.fromEntries(searchParams.entries());
-    dispatch(setFilter(searchObj));
-  }, [searchParams]);
+    onSubmit(filteredValues);
+  };
 
   return (
     <div className={css.wrapper}>
-      <Formik initialValues={initialFilters} onSubmit={handleSubmit}>
+      <Formik
+        initialValues={{ location: "", ...filters }}
+        enableReinitialize={true}
+        onSubmit={handleSubmit}
+      >
         <Form className={css.form}>
           <TextField
             id={"location"}

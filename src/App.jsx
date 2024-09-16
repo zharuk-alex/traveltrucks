@@ -1,32 +1,15 @@
 import Layout from "components/AppLayout/AppLayout";
 import routes from "./routes.jsx";
-import {
-  createBrowserRouter,
-  Outlet,
-  RouterProvider,
-  ScrollRestoration,
-} from "react-router-dom";
-import { Suspense } from "react";
-import { AppLoader } from "components/UI";
-
-const AppLayout = () => (
-  <Layout>
-    <Suspense fallback={<AppLoader visible={true} />}>
-      <ScrollRestoration />
-      <Outlet />
-    </Suspense>
-  </Layout>
-);
+import { useRoutes } from "react-router-dom";
 
 const App = () => {
-  const AppRouter = createBrowserRouter([
-    {
-      element: <AppLayout />,
-      children: [...routes],
-    },
-  ]);
+  const AppRoutes = () => useRoutes(routes);
 
-  return <RouterProvider router={AppRouter} />;
+  return (
+    <Layout>
+      <AppRoutes />
+    </Layout>
+  );
 };
 
 export default App;
