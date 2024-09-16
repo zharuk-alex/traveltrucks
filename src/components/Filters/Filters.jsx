@@ -63,7 +63,6 @@ const Filters = ({ onSubmit }) => {
               items={formFiltersModifyed}
             />
           </div>
-          <pre>loading: {JSON.stringify(isLoading, null, 2)}</pre>
           <Btn type="submit" loading={isLoading} className={css.btn}>
             Search
           </Btn>
